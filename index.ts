@@ -34,7 +34,7 @@ app.post("/whatsapp", (req, res) => {
   if (isNaN(total)) {
     res.send("<Response><Message>Sorry, I don't understand. Try something like '2 rice'</Message></Response>");
   } else {
-    res.send("<Response><Message>You ordered " + quantity + "x" + item + ". Total: NGN" + total+"</Response></Message>");
+    res.send("<Response><Message>You ordered " + quantity + "x" + item + ". Total: NGN" + total+"</Message></Response>");
   }
 });
 
