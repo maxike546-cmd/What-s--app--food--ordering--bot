@@ -18,8 +18,10 @@ app.post("/order", (req, res) => {
   const pricePerItem = menu[item as keyof typeof menu] || 0;
   const total = pricePerItem * quantity;
   if (isNaN(total)) {
+    res.set('Content-Type', 'text/xml');
     res.send("<Response><Message>Sorry, I don't understand. Try something like '2 rice'</Message></Response>");
   } else {
+    res.set('Content-Type', 'text/xml');
     res.send("<Response><Message>You ordered " + quantity + "x" + item + ". Total: NGN" + total+"</Message></Response>");
   }
 });
@@ -32,8 +34,10 @@ app.post("/whatsapp", (req, res) => {
   const pricePerItem = menu[item as keyof typeof menu] || 0;
   const total = pricePerItem * quantity;
   if (isNaN(total)) {
+    res.set('Content-Type', 'text/xml');
     res.send("<Response><Message>Sorry, I don't understand. Try something like '2 rice'</Message></Response>");
   } else {
+    res.set('Content-Type', 'text/xml');
     res.send("<Response><Message>You ordered " + quantity + "x" + item + ". Total: NGN" + total+"</Message></Response>");
   }
 });
