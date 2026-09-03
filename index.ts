@@ -26,19 +26,31 @@ app.post("/order", (req, res) => {
   }
 });
 
+const sessions={};
 app.post("/whatsapp", (req, res) => {
+  const phone = req.body.From || "";
   const text = req.body.Body || "";
+  
+  if (!sessions[phone]) {
+    sessions[phone] ={step:"welcome"}
+  };                 
+    const session=sessions[phone];
+  res.set('Content-Type','Text/XML');
+  if ( session.step== "welcome"){
+    session.step="ordering";
+    res.send("<Response><Message> Welcome to Ellas shop 😁 what is your order </Message></Response>");
+  }else if (session.step=="ordering")
   const parts = text.split(" ");
   const quantity = parts[0] || "1";
   const item = (parts[1] || "").toLowerCase();
   const pricePerItem = menu[item as keyof typeof menu] || 0;
   const total = pricePerItem * quantity;
   if (isNaN(total)) {
-    res.set('Content-Type', 'text/xml');
     res.send("<Response><Message>Sorry, I don't understand. Try something like '2 rice'</Message></Response>");
   } else {
     res.set('Content-Type', 'text/xml');
-    res.send("<Response><Message>You ordered " + quantity + "x" + item + ". Total: NGN" + total+"</Message></Response>");
+    res.send("<Response><Message>You ordered " + quantity  +  "x"  +  item + ". Total: NGN" + total+"</Message></Response>");
+  }
   }
 });
 
