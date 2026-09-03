@@ -26,7 +26,7 @@ app.post("/order", (req, res) => {
   }
 });
 
-const sessions={};
+const sessions:Record<string, any> = {};
 app.post("/whatsapp", (req, res) => {
   const phone = req.body.From || "";
   const text = req.body.Body || "";
