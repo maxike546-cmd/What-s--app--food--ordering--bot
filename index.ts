@@ -39,7 +39,7 @@ app.post("/whatsapp", (req, res) => {
   if ( session.step== "welcome"){
     session.step="ordering";
     res.send("<Response><Message> Welcome to Ellas shop 😁 what is your order </Message></Response>");
-  }else if (session.step=="ordering")
+  }else if (session.step=="ordering"){
   const parts = text.split(" ");
   const quantity = parts[0] || "1";
   const item = (parts[1] || "").toLowerCase();
