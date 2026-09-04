@@ -54,7 +54,7 @@ app.post("/whatsapp", (req, res) => {
     res.send("<Response><Message>Sorry, I don't understand. Try something like '2 rice'</Message></Response>");
   } else {
     res.set('Content-Type', 'text/xml');
-    res.send("<Response><Message>You ordered " + quantity  +  "x"  +  item + ". Total: NGN" + total+"</Message></Response>");
+    res.send("<Response><Message>You ordered " + quantity  +  " x "  +  item + ". Total: NGN" + total+"</Message></Response>");
   }
   }
 });
