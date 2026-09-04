@@ -49,6 +49,11 @@ app.post("/whatsapp", (req, res) => {
   const quantity = parts[0] || "1";
   const item = (parts[1] || "").toLowerCase();
   const pricePerItem = menu[item as keyof typeof menu] || 0;
+
+    if(!pricePerItem){
+      res.send("<Response><Message>Sorry, I don't understand.try something like this 2 rice</Message></Response>);
+        return ;
+    };
   const total = pricePerItem * quantity;
   if (isNaN(total)) {
     res.send("<Response><Message>Sorry, I don't understand. Try something like '2 rice'</Message></Response>");
