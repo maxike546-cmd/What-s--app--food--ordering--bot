@@ -35,6 +35,11 @@ app.post("/whatsapp", (req, res) => {
     sessions[phone] ={step:"welcome"}
   };                 
     const session=sessions[phone];
+
+  const greeting=text.toLowerCase().trim();
+  if (greeting=="hi" || greeting=="hey" || greeting == "what'sapp " || greeting== "menu" || greeting== "hello"){
+    session.step= "welcome";
+  };
   res.set('Content-Type','Text/XML');
   if ( session.step== "welcome"){
     session.step="ordering";
