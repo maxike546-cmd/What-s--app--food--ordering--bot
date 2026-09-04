@@ -37,7 +37,7 @@ app.post("/whatsapp", (req, res) => {
     const session=sessions[phone];
 
   const greeting=text.toLowerCase().trim();
-  if (greeting=="hi" || greeting=="hey" || greeting == "what'sapp " || greeting== "menu" || greeting== "hello"){
+  if (greeting=="hi" || greeting=="hey" || greeting == "what's up" || greeting== "menu" || greeting== "hello"){
     session.step= "welcome";
   };
   res.set('Content-Type','Text/XML');
