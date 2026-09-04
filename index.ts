@@ -38,7 +38,7 @@ app.post("/whatsapp", (req, res) => {
 
   const greeting=text.toLowerCase().trim;
   const resetWords=["hi" , "hey","hello","what's up", "menu"];
-  if(resetWords.include(greeting)){
+  if(resetWords.includes(greeting)){
     session.step= "welcome";
   };
   res.set('Content-Type','Text/XML');
